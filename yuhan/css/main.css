@@ -1,0 +1,50 @@
+@import url(default.css);
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 700;
+	font-display: swap;
+	src: local('Pretendard Bold'), url(../fonts/Pretendard-Bold.woff2) format('woff2'), url(../fonts/Pretendard-Bold.woff) format('woff');
+}
+    @font-face{ 
+        font-family: 'Pretendard';
+        font-weight: 400;
+        font-display: swap;
+        src: local('Pretendard Regular'), url(../fonts/fonts/Pretendard-Regular.woff2) format('woff2'), url(../fonts/fonts/Pretendard-SemiBold.woff) format('woff');
+}
+html, body {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0em; /* 자간 */
+    line-height: 1.2; /*배수 - 글자크기에 1.2배*/
+    color: #3d3d3d;
+    word-break: keep-all;
+}
+#wrap {
+    min-width: 1260px;
+}
+.wrapper {
+    width: 1260px;
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+}
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+header .logo {
+    margin: 31px 0 0 0;
+}
+header .gnb ul {
+    display: flex;
+}
+header .gnb ul li a {
+    font-size: 20px;
+    color: #1d1d1d;
+    padding: 31px 35px 27px 21px;
+    display: block;
+}
