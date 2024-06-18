@@ -28,6 +28,7 @@ header h1 {
     font-size: 45px;
     font-weight: 700;
     text-align: center;
+    color: #1d1d1d;
     margin: 85px 0 0 0;
 }
 .visual .list ul {
@@ -38,6 +39,7 @@ header h1 {
 .visual .list ul li h2 {
     font-size: 25px;
     font-weight: 700;
+    color: #1d1d1d;
 }
 .inv {
     background-color: #F4F4F4;
@@ -48,6 +50,7 @@ header h1 {
     font-size: 45px;
     font-weight: 700;
     text-align: center;
+    color: #1d1d1d;
     padding: 77px 0 20px 0;
 }
 .inv .list ul {
