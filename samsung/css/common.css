@@ -18,23 +18,3 @@ html, body {
     width: 1260px;
     margin: 0 auto;/*가운데정렬*/
 }
-/* 1260px 나의 wrapper의 넓이에 좌우 여백 20px씩 추가한 사이즈부터 반응형*/
-@media screen and (max-width:1300px){
-    #wrap {
-        min-width: 1300px /*브라우저 넓이에 꽉차게*/
-    }
-    .wrapper {
-        /*넓이는 1260px 유지*/
-        margin: 0 20px;/*좌우에 20px*/
-    }
-}/*media*/
-@media screen and (max-width:640px){/*모바일 반응형*/
-    html, body {
-        font-size: 13px;
-    }
-    #wrap {
-        min-width: 100%;
-    }
-    .wrapper {
-        width: auto;}
-}/*media*/
