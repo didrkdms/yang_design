@@ -1,0 +1,920 @@
+@import url(default.css);
+@import url(fonts.css);
+@import url(common.css);
+
+/*폰트2개...제목에는 gmarket / 본문 pretendard 
+bosy에는 본문 서체 적용.
+제목 서체를 적용하는 방법
+1.css에서 해당 요소를 모두 선택해서 .biz h2 이렇게 각각 불러서
+gmarket 서체 적용 (font-family:gmarket을 계속 선언)
+2.css를 하나를 만들어둠
+예를들어 .tit 이라고...
+html에서 gmarket 서체를 써야하는 htnl요소에
+<section class="biz">
+    <h2 class="tit"><h2> <!--필요한 곳에 class명을 주는 방식>
+</section>*/
+.tit {
+    font-family: 'GmarketSans', sans-serif;/*sans-serif 고딕*/
+    font-weight: 500;
+    line-height: 1.2;
+}
+.tit_b {
+    font-family: 'GmarketSans', sans-serif;/*sans-serif 고딕*/
+    font-weight: 700;
+    line-height: 1.2;
+}
+header {
+    position:absolute;/*body를 기준으로 정렬*/
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    /*position을 가지고 있는 요소들 중에서
+    제일 높은 숫자를 줘서 위에 배치
+    잘못하면 메뉴 안눌림*/
+    height: 100px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+}
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+header .logo {
+    margin: 12px 0 0 0;
+}
+header .gnb .gnb_open {
+    /*모바일에서만 나타남 - pc에서는 숨김*/
+    display: none;
+}
+header .gnb .gnb_wrap ul {
+    display: flex;
+}
+header .gnb .gnb_wrap ul li a {
+    padding: 38px 49px;
+    display: block;
+    font-size: 22px;
+    position: relative;/*after 정렬의 기준*/
+}
+header .gnb .gnb_wrap ul li a::after {
+    position: absolute;/*a를 기준으로 배치*/
+    right: 0;
+    top: 47%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    content: "";/*after를 보이게 하는값*/
+}
+/*마지막 li의 a의 after 선택자를 숨김*/
+header .gnb .gnb_wrap ul li:last-child a::after {
+    display: none;
+}
+@media screen and (max-width:640px){
+    header {
+        height: 50px;
+        border-bottom: 0;
+    }
+    header .logo {
+        margin: 10px 0 0 0;
+    }
+    header .logo img {
+        width: 62px;
+        /*이미지태그로 코딩한 요소는 사이즈가 변경되면
+        반드시 css에서 img태그를 불러서 스타일을 줘야함
+        감싸는 요소에 줘도 적용안됨
+        이미지는 넓이면 높이는 알아서 조정됨*/
+    }
+    header .gnb .gnb_open {
+        /*모바일에서 나타남
+        - 이미 header에 position값이 존재함 - header를 기준으로 정렬*/
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60px;
+        height: 50px;
+        /*button의 사이즈를 크게 줘서 잘 눌리게 하려고*/
+        font-size: 0;
+        line-height: 0;/*글자 숨기기*/
+        background: url(../images/gnb_open.svg) no-repeat center center;
+    }
+    header .gnb .gnb_wrap {
+        display: none /*메뉴는 열기 버튼을 클릭했을때만 나옴*/;
+    } 
+}
+.visual {
+    background: url(../images/visual_bg.png) no-repeat center center;
+    color: #fff;
+    height: 800px;
+}
+.visual strong {
+    display: block;
+    padding: 575px 0 0 0;
+    font-size: 20px
+}
+.visual h2 {
+    font-size: 45px;
+}
+.visual em {
+    font-size: 45px;
+}
+@media screen and (max-width:640px){
+    .visual {
+        height: auto;/*높이는 콘텐츠의 길에 맞춰 알아서*/
+        padding: 216px 0 46px 0;
+    }
+    .visual strong {
+        display: none
+    }
+    .visual h2 {
+        font-size: 20px;
+    }
+    .visual em {
+        font-size: 20px;
+    } 
+}
+.biz {
+    margin: 69px 0 0 0;
+}
+.biz .wrapper {
+    display: flex;
+    justify-content: space-between;
+    /*flex로 정렬하면 좌우요소의 길이가 같아짐
+    하지만 구현을 위해서 존재하는 만큼만 길이가 잡혀야함
+    align-items을 주면 flex로 정렬된 요소들의 길이가 같아지는 현상이 사라짐*/
+    align-items: flex-start;
+}
+.biz .subject {
+    position: sticky;
+    top: 0;
+    /*나를 감싸는 요소의 길이 내부에서 스크롤되는 동안 상단에 고정으로 존재하는 것. 
+    감싸는 요소가 모두 스크롤되면 따라서 스크롤됨
+    대부분 left를 잘 안주고 top만 줌
+    고정될때 상단의 여백이 됨
+    단점: 감싸는 요소중에서 절대 overflow:hidden;을 주면 안됨
+    -- wrap한테 무조건 overflow:hidden; 줘야함
+    --그래서 플러그인으로 대체하여 잘 사용함*/
+    margin: 69px 0 0 0;
+}
+.biz .subject strong {
+    color: #1456AC;
+}
+.biz .subject h2 {
+    color: #1d1d1d;
+    font-size: 45px;
+    margin: 15px 0;
+}
+.biz .list {
+    width: 832px;
+}
+.biz .list ul {
+    display: flex;
+    flex-wrap: wrap;/*2줄 허용*/
+    gap: 24px;
+}
+.biz .list ul li {
+    width: 404px;
+    color: #fff;
+    /* border값
+    overflow: hidden;
+    넘치는 요소 숨김*/
+}
+.biz .list ul li:nth-child(odd) {/*홀수*/
+    transform: translate(0, 96px);
+    /*transform은 현재의 위치에서부터 요소를 움직이는데
+    살짝 absolute처럼 다른요소와 부딪치더라도 배치할 수 있음
+    margin은 다른 요소와 중복되면 밀리는 현상이 발생하는데
+    transform:translate로 움직이는 것은 공간을 차지하지 않음
+    기본적으로 모든 여백은 margin이고 margin으로 안되는 경우
+    transform:translate를 사용*/
+}
+.biz .list ul li a {
+    height: 400px;
+    display: block;/*height를 적용하기 위한 값*/
+    position: relative;/*h3 정렬의 기준*/
+}
+.biz .list ul li a .photo::before {
+    display: none;
+    position: absolute;/*a를 기준으로 정렬*/
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 86, 172, 0.85);
+    content: "";
+}
+.biz .list ul li a:hover .photo::before {
+    display: block;
+}
+.biz .list ul li a h3 {
+    position: absolute;
+    left: 33px;
+    bottom: 54px;/*오버시에*/
+    /*width: 100%;
+    text-align: center; - 가운데 정렬*/
+    font-size: 25px;
+}
+.biz .list ul li a:hover h3 {
+    display: block;
+    bottom: 116px;
+}
+.biz .list ul li a p {
+    display: none;
+    /*마우스 오버에만 보임
+    - 미리 오버 스타일 모두 가지고 있고, display로
+    보이는 상태만 조절하는 것이 좋음*/
+    /*display: none;*/
+    position: absolute;/*a를 기준으로*/
+    left: 33px;
+    right: 29px;
+    bottom: 60px;
+    font-size: 15px;
+}
+.biz .list ul li a:hover p{
+    display: block;
+}
+.biz .list ul li a .more {
+    display: none;
+    /*display: none; 마우스 오버에만 보임*/
+    position: absolute;
+    left: 33px;
+    bottom: 25px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    padding-right: 18px;/*오른쪽에 아이콘 들어갈 여백*/
+}
+.biz .list ul li a:hover .more{
+    display: block;
+}
+.biz .list ul li a .more::after {
+    position: absolute;/*more를 기준으로 정렬*/
+    right: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    background: url(../images/biz_more.svg) no-repeat center center / contain;
+    content: "";/*after를 보이게 하는값*/
+}
+@media screen and (max-width:640px) {
+            .biz {
+                margin: 29px 0 0 0;
+            }
+            .biz .wrapper {
+                display: block;
+            }
+            .biz .subject {
+                position: relative;/*sticky를 해지하기 위해서
+                posiition중에서 줘도 변화가 없는 값으로 대체*/
+                top: auto;/*relative도 top이 적용됨*/
+                margin: 0;
+            }
+            .biz .subject h2 {
+                font-size: 30px;
+                margin: 0;
+            }
+            .biz .subject p {
+                display: none;/*모바일 숨김*/
+            }
+            .biz .list {
+                width: auto;
+            }
+            .biz .list ul {
+                gap: 16px;
+            }
+            .biz .list ul li {
+                width: calc(50% - 8px);
+                color: #1d1d1d;
+                overflow: visible;
+                /* border값
+                overflow: hidden;
+                넘치는 요소 숨김*/
+            }
+            .biz .list ul li:nth-child(odd) {/*홀수*/
+                transform: translate(0,0);
+
+            }
+            .biz .list ul li a {
+                height: auto;/*제목이 여려줄이 될 수도 있음*/
+            }
+            .biz .list ul li a:hover .photo::before {
+                display: none;
+            }
+            .biz .list ul li a .photo {
+                height: 111px;
+                overflow: hidden;
+            }
+            .biz .list ul li a .photo img {
+                /*pc와 mobile에서 이미지와 비율이 다르게 보일때
+                img태그로 코딩한 이미지를 정해진 영역에 맞게
+                사이즈를 리사이즈해주는 코딩*/
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .biz .list ul li a h3 {
+                position: relative;
+                left: auto;
+                bottom: auto;/*오버시에*/
+                /*width: 100%;
+                text-align: center; - 가운데 정렬*/
+                font-size: 13px;
+                font-weight: 500;
+                margin: 12px 0 21px 0;
+            }
+            .biz .list ul li a:hover h3 {
+                bottom: auto;
+
+            }
+            .biz .list ul li a:hover p{
+                display: none;
+            }
+            .biz .list ul li a:hover .more{
+                display: none;
+            }
+            .biz .list ul li a .more::after {
+                position: absolute;/*more를 기준으로 정렬*/
+                right: 0;
+                top: 0;
+                width: 18px;
+                height: 18px;
+                background: url(../images/biz_more.svg) no-repeat center center / contain;
+                content: "";/*after를 보이게 하는값*/
+            }
+}/*media*/
+.news {
+    background-color: #F2F6F9;
+    margin: 247px 0 0 0;
+    padding: 86px 0 102px 0;
+}
+.news .subject strong {
+    color: #1456AC;
+}
+.news .subject h2 {
+    color: #1d1d1d;
+    font-size: 45px;
+    margin: 12px 0 46px 0;
+}
+.news .list ul {
+    display: flex;
+    justify-content: space-between;
+}
+.news .list ul li {
+    width: 404px;
+    border-top: 2px solid #3d3d3d;
+}
+.news .list ul li h3 {
+    color: #1d1d1d;
+    font-size: 25px;
+    /*무조건 2줄 - 절대 padding주면 안됨*/
+    line-height: 1.2;
+    height: 2.4em;/*행간 X 줄수 (단위 em)*/
+    overflow: hidden;
+    margin: 26px 0 23px 0;
+    /*white-space: nowrap'
+    overflow: hidden;
+    text-overflow: ellipsis - 한줄일때*/
+}
+.news .list ul li p {
+    /*무조건 3줄*/
+    line-height: 1.3;
+    height: 3.9em;
+    overflow: hidden;
+    margin: 0 0 28px 0;
+}
+.news .list ul li .date {
+    color: #666;
+    /*날짜에 여백을 주게 되면 
+    margin: 28px 0 0 0;
+    display: block*/
+}
+.news .list ul li:hover {
+    border-color: #1456AC;
+}
+.news .list ul li a:hover {
+    color: #1456AC;
+}
+.news .list ul li a:hover h3 {
+    font-weight: 700;
+    color: #1456AC;
+}
+.news .list ul li a:hover p {
+    color: #1456AC;
+}
+.news .list ul li a:hover .date {
+    color: #1456AC;
+}
+.news .wrapper {
+    position: relative;
+}
+.news .more {
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+.news .more a {
+    display: block;
+    right: 0;
+    top: 0;
+    padding: 9px 49px 9px 14px;
+    border-radius: 20px;
+    border: 1px solid #666;
+    position: relative;
+}
+.news .more a::after {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    width: 18px;
+    height: 18px;
+    background: url(../images/news_more.svg) no-repeat center center / contain;
+    content: "";/*after를 존재하게 하는것*/
+}
+.news .more a:hover {
+    background-color: #1456AC;
+    border-color: #1456AC;
+    color: #fff;
+}
+.news .more a:hover::after {
+    background-image: url(../images/news_more2.svg);
+
+}
+@media screen and (max-width:640px) {
+                .news {
+                    margin: 37px 0 0 0;
+                    padding: 41px 0 76px 0;
+                }
+                .news .subject strong {
+                    color: #1456AC;
+                }
+                .news .subject h2 {
+                    font-size: 30px;
+                    margin: 9px 0 32px 0;
+                }
+                .news .list ul {
+                    display: block; /*flex해제, inline-block/block/none 등 flex말고 다른값을 주면
+                    flex가 해제 - 그중에 제일 해당 요소에 영향이 없는 block을 줌*/
+                }
+                .news .list ul li {
+                    width: auto;/*넓이 고정한 것 해제 - 원래 해당 태그 스타일대로
+                    li는 block 태그 넓이 100%
+                    100%를 주면 margin 등의 여백을 줬을때 사이즈가 늘어날 수 있음*/
+                    border-top: 2px solid #ccc;
+                }
+                /*마지막 li*/
+                .news .list ul li:last-child {
+                    border-bottom: 2px solid #ccc;
+                }
+                .news .list ul li h3 {
+                    font-size: 13px;
+                    margin: 12px 0 0 0;
+                    height: auto;
+                    overflow: visible;
+                }
+                .news .list ul li p {
+                    display: none;
+                }
+                .news .list ul li .date {
+                   margin: 5px 0 10px 0;
+                   display: block;
+                   text-align: right;
+                }
+                
+                .news .more {
+                    position: relative;
+                    right: auto;
+                    top: auto;
+                    margin: 30px 0 0 0;
+                    text-align: center;
+                }
+                .news .more a {
+                    display: inline-block;
+                    right: 0;
+                    top: 0;
+                    padding: 7px 40px 7px 14px;
+                    border-radius: 20px;
+                    border: 1px solid #666;
+                    position: relative;
+                }
+                .news .more a::after {
+                    position: absolute;
+                    right: 13px;
+                    top: 7px;
+                    width: 13px;
+                    height: 13px;
+                    background: url(../images/news_more.svg) no-repeat center center / contain;
+                    content: "";
+                }
+                .news .more a:hover {
+                    background-color: #1456AC;
+                    border-color: #1456AC;
+                    color: #fff;
+                }
+                .news .more a:hover::after {
+                    background-image: url(../images/news_more2.svg);
+                
+                }
+}/*media*/
+
+.webzine .subject strong {
+    color: #1456AC;
+    margin: 104px 0 0 0;
+    display: block;/*margin을 적용하기 위해서*/
+}
+.webzine .subject h2 {
+    color: #1d1d1d;
+    font-size: 45px;
+    margin: 12px 0 46px 0;
+}
+.webzine .list ul {
+    display: flex;
+    justify-content: space-between;
+}
+.webzine .list ul li {
+    width: 297px;
+}
+.webzine .list ul li a {
+    height: 371px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    display: block;
+    overflow: hidden;
+}
+/*계시판에서 이미지를 가져오는 경우
+이미지의 사이즈가 다양함.
+이를 디자인한대로 동일한 사이즈로 리사이즈하는 방법
+1. 이미지를 감싸는 요소가 넓이와 높이를 가지고 있어야함.
+    overflow:hidden;
+2. 이미지에는 width:100%, height:100%, object-fit:cover를 줘야함  */
+.webzine .list ul li a .photo {
+    overflow: hidden;
+    height: 232px;/*block요소이기때문에 넓이는 안줘도 됨*/
+}
+.webzine .list ul li a .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*감싸는 요소에 꽉맞게 리사이즈 - 위아래/좌우에 가운데 이미지 정렬*/
+    transition: 0.5s;/*앞으로 img에 어떤 변화가 있으면 그걸 부드럽개 처리
+    1. 마우스 오버
+    2. 클래스추가
+    3. 브라우저 사이즈가 바뀌어서 반응형 코드 적용
+    */
+}
+.webzine .list ul li a strong {
+    color: #1456AC;
+    display: block;/*margin 적용을 위한 값*/
+    margin: 26px 0 0 18px;
+}
+.webzine .list ul li a h3 {
+    font-size: 17px;
+    margin: 0 24px 32px 18px;
+}
+/*마우스를 올렸을때*/
+.webzine .list ul li a:hover .photo img {
+    transform: scale3d(1.2, 1.2, 1);/*이미지확대*/
+}
+.webzine .list ul li a:hover {
+    border-color: #1456AC;
+    background-color: #1456AC;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+    color: #fff;
+}
+.webzine .list ul li a:hover strong {
+    color: #fff;
+}
+
+.webzine .wrapper {
+    position: relative;/*more 정렬의 기준*/
+}
+.webzine .more {
+    position: absolute;/*wrapper를 기준으로 정렬*/
+    right: 0;
+    top: 30px;
+}
+.webzine .more a {
+    padding: 6px 49px 7px 13px;
+    border: 1px solid #666;
+    border-radius: 17px;/*높이의 절반*/
+    color: #666;
+    display: block;/*padding과 border 적용을 위한 값*/
+    position: relative;/*after 정렬의 기준*/
+}
+.webzine .more a::after {
+    position: absolute;/*a를 기준으로 정렬*/
+    right: 13px;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background: url(../images/news_more.svg) no-repeat center center / contain;
+    content: "";/*after를 보이게 하는 값*/
+
+}
+.webzine .more a:hover {
+    border-color: #1456AC;
+    background-color: #1456AC;
+    color: #fff;
+
+}
+.webzine .more a:hover::after {
+    background-image: url(../images/news_more2.svg);
+}
+@media screen and (max-width:640px) {
+    .webzine .subject strong {
+        margin: 50px 0 0 0;
+    }
+    .webzine .subject h2 {
+        font-size: 30px;
+        margin: 0 0 34px 0;
+    }
+    .webzine .list ul li {
+        width:100%;
+    }
+    .webzine .list ul li:nth-child(2),
+    .webzine .list ul li:nth-child(3),
+    .webzine .list ul li:nth-child(4) {
+        display: none;
+        /*해당 태그가 존재하지 않았던 것 처럼 사라짐
+        공간 차지하지 않음*/
+    }
+
+    .webzine .list ul li a {
+        height: auto;
+        border-bottom: 34px;
+        border-radius: 0;
+        border: 0;
+    }
+    /*계시판에서 이미지를 가져오는 경우
+    이미지의 사이즈가 다양함.
+    이를 디자인한대로 동일한 사이즈로 리사이즈하는 방법
+    1. 이미지를 감싸는 요소가 넓이와 높이를 가지고 있어야함.
+        overflow:hidden;
+    2. 이미지에는 width:100%, height:100%, object-fit:cover를 줘야함  */
+    .webzine .list ul li a .photo {
+        height: 317px;/*block요소이기때문에 넓이는 안줘도 됨*/
+    }
+    .webzine .list ul li a strong {
+        display: block;/*margin 적용을 위한 값*/
+        margin: 24px 0 0 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .webzine .list ul li a h3 {
+        font-size: 13px;
+        margin: 0 83px 34px 12px;
+        line-height: 1.3;
+        height: 2.6em;
+        overflow: hidden;
+    }
+    /*마우스를 올렸을때*/
+    .webzine .list ul li a:hover .photo img {
+        transform: scale3d(1.2, 1.2, 1);/*이미지확대*/
+    }
+    .webzine .list ul li a:hover {
+        background-color: transparent;/*투명*/
+        box-shadow: none;
+        color: #3d3d3d;
+    }
+    .webzine .list ul li a:hover strong {
+        color: #1456AC;
+    }
+    .webzine .more {
+        position:relative;/*absolute 해제*/
+        right: auto;/*해제*/
+        top: auto;
+        margin: 30px 0 0 0;
+        text-align: center;
+    }
+    .webzine .more a {
+        display: inline-block;
+        right: 0;
+        top: 0;
+        padding: 7px 40px 7px 12px;
+        border: 1px solid #666;
+        border-radius: 17px;/*높이의 절반*/
+        color: #666;
+        position: relative;/*after 정렬의 기준*/
+    }
+    .webzine .more a::after {
+        position: absolute;
+        right: 13px;
+        top: 7px;
+        width: 13px;
+        height: 13px;
+        background: url(../images/news_more.svg) no-repeat center center / contain;
+        content: "";/*after를 보이게 하는 값*/
+    
+    }
+    .webzine .more a:hover {
+        border-color: #1456AC;
+        background-color: #1456AC;
+        color: #fff;
+    
+    }
+    .webzine .more a:hover::after {
+        background-image: url(../images/news_more2.svg);
+    }
+}/*media*/
+.introduce {
+    display: flex;
+    margin: 114px 0 0 0;
+}
+.introduce .intro_left {
+    width: 50%;
+    background: url(../images/introduce1.png) no-repeat center center / cover;
+    display: flex;/**/
+    justify-content: flex-end;
+}
+.introduce .intro_right {
+    width: 50%;
+    background: url(../images/introduce2.png) no-repeat center center / cover;
+}
+.introduce a {
+    height: 274px;
+    width: 630px;
+    display: block;/*height을 주기 위한 값*/
+    color: #fff;
+    padding: 0 0 0 164px;
+}
+.introduce a h2 {
+    font-size: 45px;
+    font-weight: 700;
+    margin: 56px 0 26px 0;
+}
+.introduce a p {
+    margin: 0 86px 8px 0 ;
+}
+.introduce a .more {
+    display: inline-block;
+    padding-right: 25px;
+    position: relative;
+    color: rgba(255,255,255,0.8);
+}
+.introduce a .more::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    background: url(../images/intro_ico.svg) no-repeat center center / contain;
+    content: "";
+}
+@media screen and (max-width:640px) {
+    .introduce {
+        display: block;
+        margin: 44px 0 0 0;
+    }
+    .introduce .intro_left {
+        width: auto;
+        background: url(../images/introduce1.png) no-repeat center center / cover;
+        display: block;
+    }
+    .introduce .intro_right {
+        width: auto;
+        background: url(../images/introduce2.png) no-repeat center center / cover;
+    }
+    .introduce a {
+        height: auto;
+        width: auto;
+        color: #fff;
+        padding: 48px 0 22px 22px;
+    }
+    .introduce a h2 {
+        font-size: 30px;
+        margin: 0 0 7px 0;
+    }
+    .introduce a p {
+        margin: 0 0 10px 0;
+        
+    }
+    .introduce a .more {
+        display: inline-block;
+        padding-right: 17px;
+        position: relative;
+        color: rgba(255,255,255,0.8);
+    }
+    .introduce a .more::after {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        background: url(../images/intro_ico.svg) no-repeat center center / contain;
+        content: "";
+    }
+}
+
+footer {
+    background-color: #2D2D2D;
+    padding: 90px 0 100px 0;
+    color: rgba(255,255,255,0.8);
+}
+footer .wrapper {
+    position: relative;/*top 정렬의 기준*/
+}
+footer .top {
+    position: absolute;/*wrapper 기준으로 정렬*/
+    right: 0;
+    top: 0;
+}
+footer .top button {
+    width: 77px;
+    height: 77px;
+    border: 1px solid #fff;
+    border-radius: 50%;/*동그라미*/
+    padding: 25px 0 0 0;
+    position: relative;/*before 정렬의 기준*/
+}
+footer .top button::before {
+    position: absolute;/*button을 기준으로 정렬*/
+    left: 23px;
+    top: 10px;
+    width: 29px;
+    height: 29px;
+    background: url(../images/top_ico.svg) no-repeat center center / contain;
+    content: "";/*before를 보이게 하는 값*/
+}
+footer .f_nav ul{
+    display: flex;
+    gap: 36px;
+}
+footer .f_nav ul li {
+    position: relative;/*after 정렬의 기준*/
+}
+footer .f_nav ul li::after {
+    position: absolute;/*li 기준으로 정렬*/
+    right: -15px;
+    top: 1px;
+    width: 1px;
+    height: 13px;
+    background-color: rgba(255,255,255,0.2);
+    content: "";
+}
+footer .f_nav ul li:last-child::after {
+    display: none;
+}
+footer .f_info {
+    margin: 40px 0 0 0;
+    display: flex;
+    gap: 36px;
+}
+footer .copyright {
+    margin: 16px 0 0 0;
+    color: rgba(255,255,255,0.6);
+}
+@media screen and (max-width:640px) {
+    footer {
+        padding: 21px 0 45px 0;
+    }
+    footer .top {
+        position: relative;/*absolute 해제*/
+        right: auto;
+        top: auto;
+        text-align: right;
+        margin: 0 0 39px 0;
+    }
+    footer .top button {
+        width: 59px;
+        height: 59px;
+        border: 1px solid #fff;
+        border-radius: 50%;/*동그라미*/
+        padding: 20px 0 0 0;
+    }
+    footer .top button::before {
+        left: 17px;
+        top: 8px;
+        width: 22px;
+        height: 22px;
+    }
+    footer .f_nav ul{
+        flex-wrap: wrap/*여러줄 허용*/;
+        gap: 0;
+    }
+    footer .f_nav ul li {
+        margin: 0 14px 7px 0;
+    }
+    footer .f_nav ul li::after {
+        position: absolute;/*li 기준으로 정렬*/
+        right: -6px;
+        top: 3px;
+        width: 1px;
+        height: 7px;
+    }
+    footer .f_nav ul li:last-child::after {
+        display: none;
+    }
+    footer .f_info {
+        margin: 20px 0 0 0;
+        flex-wrap: wrap;
+        gap: 0;
+    }
+    footer .f_info .address,
+    footer .f_info span {
+        margin: 17px 0 6px 0;
+    }
+    footer .copyright {
+        margin: 16px 0 0 0;
+        color: rgba(255,255,255,0.6);
+    }
+}/*media*/
