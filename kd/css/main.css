@@ -11,32 +11,24 @@ html, body {
     color: #3d3d3d;
     word-break: keep-all;
 }
-/* 홈페이지 전체를 감싸는 요소 - 가로스크롤바가 생겼을때 배경이 짤리는 현상을 막음 */
-#wrap {
-    min-width: 1260px
-}
 /*홈페이지의 넓이를 제한하고 가운데정렬*/
 .wrapper {
     width: 1260px;
     margin: 0 auto;/*가운데정렬*/
 }
-
-header {
-    height: 100px;
-}
-header h1 {
+.visual h2 {
     font-size: 45px;
     font-weight: 700;
     text-align: center;
     color: #1d1d1d;
-    margin: 85px 0 0 0;
+    margin: 85px 0 20px 0;
 }
-.visual .list ul {
+.visual ul {
     display: flex;
     justify-content: space-between;
     gap: 24px;
 }
-.visual .list ul li h2 {
+.visual ul li h3 {
     font-size: 25px;
     font-weight: 700;
     color: #1d1d1d;
@@ -44,7 +36,7 @@ header h1 {
 .inv {
     background-color: #F4F4F4;
     height: 762px;
-    margin: 77px 0 0 0;
+    margin: 77px 0 80px 0;
 }
 .inv h1 {
     font-size: 45px;
@@ -53,10 +45,9 @@ header h1 {
     color: #1d1d1d;
     padding: 77px 0 20px 0;
 }
-.inv .list ul {
+.inv ul {
     display: flex;
     justify-content: space-between;
-    gap: 24px;
 }
 
 .inv ul li {
@@ -72,7 +63,7 @@ header h1 {
 .inv ul li.inv2 {
     background-image: url(../images/tech02.png);
 }
-.inv ul li a h3 {
+.inv ul li a h2 {
     font-size: 35px;
     font-weight: 700;
     color: #fff;
