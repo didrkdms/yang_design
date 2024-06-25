@@ -2,3 +2,28 @@
 @import url(fonts.css);
 @import url(common.css);
 
+html, body {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0em; /* 자간 */
+    line-height: 1.2; /*배수 - 글자크기에 1.2배*/
+    color: #3d3d3d;
+    word-break: keep-all;
+}
+#wrap {
+    min-width: 1260px;
+}
+.wrapper {
+    width: 1260px;
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+}
+header .wrapper{
+    display: flex;
+    justify-content: space-between;
+
+}
