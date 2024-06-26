@@ -34,6 +34,9 @@ header .gnb ul li a {
     margin: 47px 18px 35px 18px;
     display: block;
 }
+header .gnb ul li a:last-child {
+    margin-right: 0;
+}
 header .logo {
     margin: 39px 0 0 0;
 }
