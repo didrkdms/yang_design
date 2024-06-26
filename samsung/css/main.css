@@ -131,7 +131,6 @@ header .tnb .shopping::before {
 .visual {
     height: 800px;
     background: url(../images/visual_bg.png) no-repeat center center / cover;
-    margin: 0 0 200px 0;
 }
 .visual strong {
     font-size: 20px;
@@ -157,4 +156,37 @@ header .tnb .shopping::before {
 .visual .btn:hover {
     background-color: #fff;
     color: #1d1d1d;
+}
+.keyword {
+    background-color: #EDEDED;
+    height: 900px;
+}
+.keyword h2 {
+    font-size: 50px;
+    font-weight: 700;
+    color: #1d1d1d;
+    text-align: center;
+    padding: 121px 0 0 0;
+}
+.keyword p {
+    text-align: center;
+    margin: 17px 0 0 0;
+}
+.keyword .btn ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 122px 0 0 0;
+}
+.keyword .btn ul li a {
+    border: 1px solid #fff;
+    border-radius: 32px;
+    background-color: #fff;
+    padding: 20px 47px 20px 47px;
+    font-weight: 700;
+    color: #1d1d1d;
+}
+.keyword .btn ul li a:hover {
+    background-color: #484848;
+    border: none;
+    color: #fff;
 }
